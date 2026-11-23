@@ -2,6 +2,7 @@ using Bloggie.Web.Data;
 using Bloggie.Web.Models.Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace Bloggie.Web.Pages.Admin.Blogs
 {
@@ -20,5 +21,6 @@ namespace Bloggie.Web.Pages.Admin.Blogs
         {
             BlogPosts = _bloggieDbContext.BlogPosts.ToList();
         }
+
     }
 }

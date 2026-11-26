@@ -17,9 +17,9 @@ namespace Bloggie.Web.Pages.Admin.Blogs
             _bloggieDbContext = bloggieDbContext;
         }
 
-        public void OnGet()
+        public async Task OnGet()
         {
-            BlogPosts = _bloggieDbContext.BlogPosts.ToList();
+            BlogPosts = (await _bloggieDbContext.BlogPosts.ToListAsync())?.ToList();
         }
 
     }

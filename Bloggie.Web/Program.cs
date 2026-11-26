@@ -1,14 +1,18 @@
 using Bloggie.Web.Data;
+using Bloggie.Web.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// builder.services is used to add middleware to our application
 builder.Services.AddRazorPages();
 
 builder.Services.AddDbContext<BloggieDbContext>(options =>
 options.UseSqlServer(
     builder.Configuration.GetConnectionString("BloggieDbConnectionString")));
+
+
+builder.Services.AddScoped<IBlogPostRepository, BlogPostRepository>();
 
 var app = builder.Build();
 

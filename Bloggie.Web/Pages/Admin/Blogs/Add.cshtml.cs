@@ -42,6 +42,8 @@ namespace Bloggie.Web.Pages.Admin.Blogs
             
             await _blogPostRepository.AddAsync(blogPost);
 
+            TempData["MessageDescription"] = "New blog post created!";
+
             return RedirectToPage("/Admin/Blogs/List");
 
         }

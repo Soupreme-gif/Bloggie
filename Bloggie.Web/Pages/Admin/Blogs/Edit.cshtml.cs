@@ -59,9 +59,7 @@ namespace Bloggie.Web.Pages.Admin.Blogs
 
                 return RedirectToPage("/Admin/Blogs/List");
             }
-            
-
-            return Page();
+           
         }
 
         public async Task<IActionResult> OnPostDelete()

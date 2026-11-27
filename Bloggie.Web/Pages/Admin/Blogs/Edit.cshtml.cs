@@ -35,19 +35,29 @@ namespace Bloggie.Web.Pages.Admin.Blogs
 
                 await _blogPostRepository.UpdateAsync(BlogPost);
 
-                ViewData["Notification"] = new Notification
+                var notification = new Notification
                 {
-                    Message = "Record updated succesfully!",
+                    Message = "Blog successfully deleted!",
                     Type = Enums.NotificationType.Success
                 };
+
+                //JsonSerializer is nessesary because "TempData" gets sent to another page as an Http request which can't pass complex objects like the notification variable above
+                TempData["Notification"] = JsonSerializer.Serialize(notification);
+
+                return RedirectToPage("/Admin/Blogs/List");
             }
             catch(Exception ex)
             {
-                ViewData["Notification"] = new Notification
+                var notification = new Notification
                 {
                     Message = "Something went wrong!",
                     Type = Enums.NotificationType.Error
                 };
+
+                //JsonSerializer is nessesary because "TempData" gets sent to another page as an Http request which can't pass complex objects like the notification variable above
+                TempData["Notification"] = JsonSerializer.Serialize(notification);
+
+                return RedirectToPage("/Admin/Blogs/List");
             }
             
 
